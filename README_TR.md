@@ -30,6 +30,8 @@ Gömülü hedefte çalışan taşınabilir C kütüphanesi:
 
 `.c.gcov` dosyalarını görsel olarak sunan bir VS Code Editor eklentisidir.
 
+https://github.com/abdulkadrtr/gcov_viewer reposundan erişebilirsiniz.
+
 ### 3. `example_project` — STM32 Örnek Projesi
 
 Tüm iş akışını gösteren, STM32F103 (Cortex-M3) için çalışan bir örnek. UART üzerinden coverage verisinin toplanması, host'a aktarılması ve raporların oluşturulmasının uçtan uca nasıl yapıldığını gösterir.
@@ -366,16 +368,7 @@ gcov_package/
 │   ├── test.c                        # MC/DC test fonksiyonları
 │   ├── test.h                        # Test fonksiyonları başlık dosyası
 │   ├── startup.c                     # Reset handler + .init_array başlatma
-│   └── stm32.ld                      # Linker script
-│
-├── gcov-viewer/                      # VS Code eklentisi
-│   ├── package.json                 
-│   ├── language-configuration.json 
-│   ├── README.md    
-│   └── vsix/
-│   |   └── gcov-viewer-1.0.0.vsix                      
-│   └── src/
-│       └── extension.js              
+│   └── stm32.ld                      # Linker script           
 │
 └── coverage_result/                  # Üretilen .gcov rapor dosyaları (make gcov)
 ```

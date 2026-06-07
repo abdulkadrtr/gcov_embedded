@@ -32,6 +32,8 @@ A portable C library running on the embedded target:
 
 A VS Code editor extension that visually presents `.c.gcov` files.
 
+You can access the project from: https://github.com/abdulkadrtr/gcov_viewer
+
 ### 3. `example_project` — STM32 Example Project
 
 A working example for STM32F103 (Cortex-M3) demonstrating the complete workflow. Shows end-to-end how to collect coverage data over UART, transfer it to the host, and generate reports.
@@ -368,16 +370,7 @@ gcov_package/
 │   ├── test.c                        # MC/DC test functions
 │   ├── test.h                        # Test functions header file
 │   ├── startup.c                     # Reset handler + .init_array initialization
-│   └── stm32.ld                      # Linker script
-│
-├── gcov-viewer/                      # VS Code extension
-│   ├── package.json                 
-│   ├── language-configuration.json 
-│   ├── README.md    
-│   └── vsix/
-│   |   └── gcov-viewer-1.0.0.vsix                      
-│   └── src/
-│       └── extension.js              
+│   └── stm32.ld                      # Linker script          
 │
 └── coverage_result/                  # Generated .gcov report files (make gcov)
 ```
