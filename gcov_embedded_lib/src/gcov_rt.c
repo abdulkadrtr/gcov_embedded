@@ -9,11 +9,11 @@
 
 /** Size of the staging buffer (bytes) used to batch /WRITE payloads. */
 #ifndef GCOV_BUF_SIZE
-#define GCOV_BUF_SIZE 256
+#define GCOV_BUF_SIZE 128
 #endif
 
 #ifndef GCOV_POOL_SIZE
-#define GCOV_POOL_SIZE 256
+#define GCOV_POOL_SIZE 64
 #endif
 
 
