@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    env:
+      TOOLCHAIN_VERSION: "14.2.rel1"
+      TOOLCHAIN_ARCH:    "x86_64"
+      TOOLCHAIN_TARGET:  "arm-none-eabi"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache ARM toolchain
+        id: cache-tc
+        uses: actions/cache@v4
+        with:
+          path: ~/toolchain
+          key: arm-gnu-${{ env.TOOLCHAIN_VERSION }}-${{ env.TOOLCHAIN_ARCH }}
+
+      - name: Download ARM GNU toolchain
+        if: steps.cache-tc.outputs.cache-hit != 'true'
+        run: |
+          NAME="arm-gnu-toolchain-${TOOLCHAIN_VERSION}-${TOOLCHAIN_ARCH}-${TOOLCHAIN_TARGET}"
+          URL="https://developer.arm.com/-/media/Files/downloads/gnu/${TOOLCHAIN_VERSION}/binrel/${NAME}.tar.xz"
+          mkdir -p ~/toolchain
+          curl -fsSL "$URL" | tar -xJ --strip-components=1 -C ~/toolchain
+
+      - name: Add toolchain to PATH
+        run: echo "$HOME/toolchain/bin" >> "$GITHUB_PATH"
+
+      - name: Verify toolchain
+        run: arm-none-eabi-gcc --version
+
+      - name: Build firmware
+        run: make all
+
+      - name: Upload firmware binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ github.sha }}
+          path: build/firmware.bin
+          if-no-files-found: error
