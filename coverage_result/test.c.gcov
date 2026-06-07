@@ -1,0 +1,19 @@
+        -:    0:Source:example_project/test.c
+        -:    1:#include "test.h"
+        -:    2:
+function full_mcdc called 4 returned 100% blocks executed 100%
+        4:    3:int full_mcdc(int a, int b, int c)
+        -:    4:{
+        4:    5:    if ((a > 0) && (b > 0) && (c > 0))
+branch  0 taken 3 (fallthrough)
+branch  1 taken 1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 1
+condition outcomes covered 6/6
+        -:    6:    {
+        1:    7:        return 1;
+        -:    8:    }
+        3:    9:    return 0;
+        -:   10:}

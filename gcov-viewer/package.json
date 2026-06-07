@@ -1,0 +1,58 @@
+{
+  "name": "gcov-viewer",
+  "displayName": "GCov Coverage Viewer",
+  "description": "Visual coverage viewer for .c.gcov files with line, branch and MC/DC highlighting",
+  "version": "1.0.0",
+  "publisher": "gcov-viewer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/gcov-viewer"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Testing",
+    "Visualization"
+  ],
+  "activationEvents": [
+    "onLanguage:gcov",
+    "onCustomEditor:gcovViewer.editor"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "gcov",
+        "aliases": [
+          "GCov Coverage"
+        ],
+        "extensions": [
+          ".gcov"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "gcovViewer.editor",
+        "displayName": "GCov Coverage Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.gcov"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "gcovViewer.openRaw",
+        "title": "GCov: Open Raw Text"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.9.2"
+  }
+}
