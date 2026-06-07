@@ -106,12 +106,20 @@ The following steps demonstrate a complete coverage workflow using the included 
 
 ### 1. Set the Toolchain Path
 
-Edit the `CC` and `OBJCOPY` paths in the `Makefile` to match your GCC toolchain installation:
+Make sure `arm-none-eabi-gcc` is available in your `PATH`.
 
-```makefile
-CC      = /path/to/arm-none-eabi-gcc
-OBJCOPY = /path/to/arm-none-eabi-objcopy
+```bash
+# Download from https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+# Then add to PATH:
+export PATH="/path/to/arm-gnu-toolchain/bin:$PATH"
 ```
+
+Verify the installation:
+```bash
+arm-none-eabi-gcc --version
+```
+
+> **Note:** GCC 14.2 or newer is required for MC/DC coverage support (`-fcondition-coverage`).
 
 ### 2. Build the Project
 

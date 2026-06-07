@@ -49,3 +49,18 @@ jobs:
           name: firmware-${{ github.sha }}
           path: build/firmware.bin
           if-no-files-found: error
+
+      - name: Library footprint
+        run: |
+          SIZE=arm-none-eabi-size
+ 
+          echo "=== Library Footprint ==="
+          $SIZE -B build/kit_gcov_rt.o build/kit_libc_stubs.o
+          echo ""
+ 
+          echo "=== Library Total ==="
+          $SIZE -B --totals build/kit_gcov_rt.o build/kit_libc_stubs.o | tail -1
+          echo ""
+ 
+          echo "=== Full Firmware ==="
+          $SIZE -B build/firmware.elf

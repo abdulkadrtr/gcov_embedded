@@ -104,12 +104,20 @@ Aşağıdaki adımlar, dahil edilen `example_project` üzerinden tam bir coverag
 
 ### 1. Toolchain Yolunu Ayarlayın
 
-`Makefile` içindeki `CC` ve `OBJCOPY` yollarını kendi GCC toolchain kurulumunuza göre düzenleyin:
+`arm-none-eabi-gcc` komutunun `PATH`'inizde erişilebilir olduğundan emin olun.
 
-```makefile
-CC      = /path/to/arm-none-eabi-gcc
-OBJCOPY = /path/to/arm-none-eabi-objcopy
+```bash
+# https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads adresinden indirin
+# Ardından PATH'e ekleyin:
+export PATH="/path/to/arm-gnu-toolchain/bin:$PATH"
 ```
+
+Kurulumu doğrulayın:
+```bash
+arm-none-eabi-gcc --version
+```
+
+> **Not:** MC/DC kapsama desteği (`-fcondition-coverage`) için GCC 14.2 veya daha yeni bir sürüm gereklidir.
 
 ### 2. Projeyi Derleyin
 
