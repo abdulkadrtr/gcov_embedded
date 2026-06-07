@@ -4,6 +4,9 @@
 
 This project collects code coverage data (line coverage, branch coverage, and MC/DC) on microcontrollers running without a filesystem or operating system, and transmits the data to a host computer over UART (or any byte-stream transport).
 
+<img width="737" height="487" alt="preview" src="https://github.com/user-attachments/assets/36ee3405-b05e-41d4-b369-4a82ac0f9498" />
+
+
 ### Supported Coverage Types
 
 | Coverage Type | Description |
